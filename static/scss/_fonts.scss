@@ -1,0 +1,24 @@
+@font-face {
+    font-display: swap;
+    font-family: 'DM Serif Display';
+    font-style: normal;
+    font-weight: 400;
+}
+
+// Red Hat Display - Regular
+@font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Red Hat Display';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/red-hat-display/RedHatDisplay-Regular.ttf') format('ttf')
+}
+
+// Red Hat Display - Bold
+@font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Red Hat Display';
+    font-style: normal;
+    font-weight: 700;
+    src: url('../fonts/red-hat-display/RedHatDisplay-Bold.ttf') format('ttf')
+}
