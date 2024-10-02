@@ -1,28 +1,47 @@
 console.log("script loaded");
 
 document.querySelector('#contact').addEventListener('submit', function (event) {
-    event.preventDefault();
+    event.preventDefault(); // Prevent default form submission
+    const contactForm = new FormData(this);
 
-    const form = event.target;
-    const contactForm = new FormData(form);
-
-    const xhr = new XMLHttpRequest();
-    xhr.open('POST', 'includes/formvalidate.php', true);
-    xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-            try {
-                const response = JSON.parse(xhr.responseText);
-                console.log(response);
-                window.location.href = 'success.php';
-            } catch (e) {
-                console.error('Invalid JSON response:', xhr.responseText);
+    fetch('includes/formvalidate.php', {
+        method: 'POST',
+        body: contactForm
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
             }
-        } else if (xhr.readyState === 4) {
-            console.log('Server error');
-        }
-    };
+            return response.json();
+        })
+        .then(data => {
+            if (data.status === 'error') {
+                // JSON error output as a console error
+                console.error('Validation errors:', data.errors);
+                // toggle error message with a .hidden class
+                const toggleError = (inputElement, errorElement) => {
+                    if (inputElement.value.trim() !== '') {
+                        errorElement.classList.add('hidden'); // Hide error if input is filled
+                    } else {
+                        errorElement.classList.remove('hidden'); // Show error if input is empty
+                    }
+                };
 
-    xhr.send(contactForm);
+                for (const field in data.errors) {
+                    const errorElement = document.getElementById(`${field}-error`);
+                    const inputElement = document.getElementById(field);
+
+                    if (errorElement && inputElement) {
+                        errorElement.textContent = data.errors[field] || '';
+                        errorElement.classList.remove('hidden');
+
+                        // check if it's being dynamically changed
+                        inputElement.addEventListener('input', () => toggleError(inputElement, errorElement));
+                    }
+                }
+            } else {
+                window.location.href = 'success.php';
+            }
+        })
+        .catch(error => console.error('Error:', error));
 });

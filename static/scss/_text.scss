@@ -1,10 +1,14 @@
 
 
 h1 {
-    // change later
-    font-family: $font-body;
+    font-family: $font-heading;
+	font-weight: $font-weight-black;
 }
 
 h2 {}
 
 h3 {}
+
+p {
+	font-family: $font-body;
+}

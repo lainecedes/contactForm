@@ -1,3 +1,4 @@
+/*$font-heading: 'microgramma-extended', sans-serif;*/
 fieldset {
   border: none;
 }
@@ -12,6 +13,10 @@ button[type=submit],
 input[type=submit] {
   background: none;
   border: 0.1rem solid;
+}
+
+.hidden {
+  display: none;
 }
 
 * {
@@ -337,12 +342,6 @@ template {
 }
 
 @font-face {
-  font-display: swap;
-  font-family: "DM Serif Display";
-  font-style: normal;
-  font-weight: 400;
-}
-@font-face {
   font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
   font-family: "Red Hat Display";
   font-style: normal;
@@ -356,7 +355,19 @@ template {
   font-weight: 700;
   src: url("../fonts/red-hat-display/RedHatDisplay-Bold.ttf") format("ttf");
 }
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Urbanist";
+  font-style: normal;
+  font-weight: 900;
+  src: url("../fonts/urbanist/Urbanist-Black.ttf") format("ttf");
+}
 h1 {
+  font-family: "Urbanist", sans-serif;
+  font-weight: 900;
+}
+
+p {
   font-family: "Red Hat Display", sans-serif;
 }
 

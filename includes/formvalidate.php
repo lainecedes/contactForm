@@ -1,14 +1,14 @@
 <?php
 session_start();
+
 ini_set('display_errors', 1);
 ini_set('log_errors', 1);
 
-
 $errors = [];
 
+
 // function to sanitize inputs using htmlspecialchars and trim
-function sanitizeInputs($input)
-{
+function sanitizeInputs($input) {
     if (is_array($input)) {
         foreach ($input as $key => $value) {
             $input[$key] = htmlspecialchars(trim($value)); // trim and value together
@@ -20,38 +20,60 @@ function sanitizeInputs($input)
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    $voornaam = sanitizeInputs(isset($_POST["voornaam"]) ? $_POST["voornaam"] : '');
-    $achternaam = sanitizeInputs(isset($_POST["achternaam"]) ? $_POST["achternaam"] : '');
-    $emailadres = sanitizeInputs(isset($_POST["emailadres"]) ? $_POST["emailadres"] : '');
-    $bericht = sanitizeInputs(isset($_POST["bericht"]) ? $_POST["bericht"] : '');
+    // regex patterns
+    $emailPattern = '/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/';
+    $namePattern = '/^[a-zA-Z0-9- ]+$/';
+    $messagePattern = '/^.{1,500}$/';
 
-    // Check for empty inputs and assign errors
-    if (empty($voornaam)) {
-        $errors['voornaam'] = 'Voornaam is verplicht';
-    }
-    if (empty($achternaam)) {
-        $errors['achternaam'] = 'Achternaam is verplicht';
-    }
-    if (empty($emailadres)) {
-        $errors['emailadres'] = 'Emailadres is verplicht';
-    }
-    if (empty($bericht)) {
-        $errors['bericht'] = 'Bericht is verplicht';
+
+    // put post inputs in array to use for foreach loop later + sanitize
+    $formInputs = [
+        'voornaam' => sanitizeInputs(isset($_POST['voornaam']) ? $_POST['voornaam'] : ''),
+        'achternaam' => sanitizeInputs(isset($_POST['achternaam']) ? $_POST['achternaam'] : ''),
+        'emailadres' => sanitizeInputs(isset($_POST['emailadres']) ? $_POST['emailadres'] : ''),
+        'bericht' => sanitizeInputs(isset($_POST['bericht']) ? $_POST['bericht'] : '')
+    ];
+
+    // multidimentional array to store pattern and error message
+    $patterns = [
+        'voornaam' => [
+            'pattern' => $namePattern,
+            'error' => "Voornaam mag alleen letters en spaties bevatten"
+        ],
+        'achternaam' => [
+            'pattern' => $namePattern,
+            'error' => "Achternaam mag alleen letters en spaties bevatten"
+        ],
+        'emailadres' => [
+            'pattern' => $emailPattern,
+            'error' => 'Voer een geldig e-mailadres in (voorbeeld hierin?)'
+            ],
+        'bericht' => [
+            'pattern' => $messagePattern,
+            'error' => 'Bericht mag max 500 karakters zijn'
+        ]
+    ];
+
+    foreach ($formInputs as $field => $value) {
+        if (empty($value)) {
+            $errors[$field] = "$field is verplicht";
+        }
+        else if (!preg_match($patterns[$field]['pattern'], $value)) {
+            $errors[$field] = $patterns[$field]['error'];
+        }
     }
 
     if (empty($errors)) {
         $_SESSION['formData'] = [
-            'voornaam' => $voornaam,
-            'achternaam' => $achternaam,
-            'emailadres' => $emailadres,
-            'bericht' => $bericht
+            'voornaam' => $formInputs['voornaam'],
+            'achternaam' => $formInputs['achternaam'],
+            'emailadres' => $formInputs['emailadres'],
+            'bericht' => $formInputs['bericht']
         ];
 
-        header('Content-Type: application/json');
         echo json_encode(['status' => 'success']);
 
     } else {
-        header('Content-Type: application/json');
         echo json_encode(['status' => 'error', 'errors' => $errors]);
     }
     exit;

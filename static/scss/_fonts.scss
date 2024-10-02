@@ -1,9 +1,3 @@
-@font-face {
-    font-display: swap;
-    font-family: 'DM Serif Display';
-    font-style: normal;
-    font-weight: 400;
-}
 
 // Red Hat Display - Regular
 @font-face {
@@ -21,4 +15,13 @@
     font-style: normal;
     font-weight: 700;
     src: url('../fonts/red-hat-display/RedHatDisplay-Bold.ttf') format('ttf')
+}
+
+// Urbanist - Black
+@font-face {
+	font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+	font-family: 'Urbanist';
+	font-style: normal;
+	font-weight: 900;
+	src: url('../fonts/urbanist/Urbanist-Black.ttf') format('ttf')
 }

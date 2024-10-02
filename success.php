@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 var_dump($_SESSION['formData']);
 
 if (isset($_SESSION['formData'])) {
@@ -34,6 +35,7 @@ if (isset($_SESSION['formData'])) {
 </head>
 <body>
 <h1>Form Submission Successful!</h1>
+
 <p>Voornaam: <?php echo $voornaam ?></p>
 <p>Achternaam: <?php echo $achternaam ?></p>
 <p>Emailadres: <?php echo $emailadres ?></p>
