@@ -27,6 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
     // put post inputs in array to use for foreach loop later + sanitize
+
     $formInputs = [
         'voornaam' => sanitizeInputs(isset($_POST['voornaam']) ? $_POST['voornaam'] : ''),
         'achternaam' => sanitizeInputs(isset($_POST['achternaam']) ? $_POST['achternaam'] : ''),
@@ -56,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     foreach ($formInputs as $field => $value) {
         if (empty($value)) {
-            $errors[$field] = "$field is verplicht";
+            $errors[$field] = ucfirst($field)." is verplicht"; // capizalize first letter
         }
         else if (!preg_match($patterns[$field]['pattern'], $value)) {
             $errors[$field] = $patterns[$field]['error'];

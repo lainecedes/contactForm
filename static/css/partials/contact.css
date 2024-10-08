@@ -1,0 +1,54 @@
+/*$font-heading: "Urbanist", sans-serif;*/
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  background-color: #240046;
+  color: #fff;
+}
+
+.contact-container {
+  display: flex;
+  gap: 2rem;
+  align-items: stretch;
+}
+.contact-container .image-container,
+.contact-container form {
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 0;
+}
+.contact-container picture {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  height: 34rem;
+}
+.contact-container picture img {
+  border-radius: 1rem;
+  width: 100%;
+  height: auto;
+  max-height: 100%;
+  object-fit: cover;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .name-container {
+    flex-direction: column;
+    gap: 0;
+  }
+  .contact-container {
+    flex-direction: column;
+    margin-top: 25%;
+  }
+  .contact-container picture {
+    height: 10rem;
+  }
+  .image-container {
+    justify-content: center;
+  }
+}
+
+/*# sourceMappingURL=contact.css.map */

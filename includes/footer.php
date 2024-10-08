@@ -1,3 +1,3 @@
 <footer>
-    <p>&copy; mijn project</p>
+    <small>&copy; mijn project</small>
 </footer>

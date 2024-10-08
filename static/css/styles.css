@@ -1,22 +1,86 @@
-/*$font-heading: 'microgramma-extended', sans-serif;*/
-fieldset {
+/*$font-heading: "Urbanist", sans-serif;*/
+form {
+  width: 80vw;
+}
+form fieldset {
   border: none;
+  padding: 0;
+}
+form fieldset legend {
+  margin: 0 0 1rem 0;
+}
+form fieldset .label-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+form fieldset .label-container .name-container {
+  display: flex;
+  gap: 1rem;
+}
+form fieldset .label-container .name-container label[for=voornaam], form fieldset .label-container .name-container label[for=achternaam] {
+  flex: 1;
+}
+form fieldset .label-container label[for=bericht] textarea {
+  margin: 0.5rem 0 0 0;
+}
+
+/* Success page*/
+.form-results .label-container {
+  display: flex;
+  flex-direction: column;
+}
+
+textarea {
+  padding: 0.5rem 0.5rem 0.5rem;
+  resize: none;
 }
 
 input[type=text],
 input[type=email],
-input[type=tel] {
+textarea {
+  background-color: #3c096c;
+  color: #fff;
+  margin: 0.5rem 0 0.5rem 0;
+  border-radius: 0.5rem;
+  border: none;
+  width: 100%;
   padding: 0.5rem;
+}
+input[type=text]::placeholder,
+input[type=email]::placeholder,
+textarea::placeholder {
+  color: #fff;
+  opacity: 0.7;
+}
+input[type=text].invalid,
+input[type=email].invalid,
+textarea.invalid {
+  border: 0.1rem solid #ff0000;
+}
+input[type=text].valid,
+input[type=email].valid,
+textarea.valid {
+  border: 0.1rem solid #00a400;
 }
 
 button[type=submit],
 input[type=submit] {
-  background: none;
-  border: 0.1rem solid;
+  color: inherit;
+  background: #7b2cbf;
+  border-radius: 0.3rem;
+  margin: 1rem 0 0 0;
+  padding: 0.75rem;
+  width: 10rem;
+  cursor: pointer;
 }
 
 .hidden {
   display: none;
+}
+
+.error {
+  color: #ff0000;
 }
 
 * {
@@ -363,12 +427,65 @@ template {
   src: url("../fonts/urbanist/Urbanist-Black.ttf") format("ttf");
 }
 h1 {
-  font-family: "Urbanist", sans-serif;
+  font-family: "microgramma-extended", sans-serif;
   font-weight: 900;
 }
 
 p {
   font-family: "Red Hat Display", sans-serif;
+}
+
+/*$font-heading: "Urbanist", sans-serif;*/
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  background-color: #240046;
+  color: #fff;
+}
+
+.contact-container {
+  display: flex;
+  gap: 2rem;
+  align-items: stretch;
+}
+.contact-container .image-container,
+.contact-container form {
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 0;
+}
+.contact-container picture {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  height: 34rem;
+}
+.contact-container picture img {
+  border-radius: 1rem;
+  width: 100%;
+  height: auto;
+  max-height: 100%;
+  object-fit: cover;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .name-container {
+    flex-direction: column;
+    gap: 0;
+  }
+  .contact-container {
+    flex-direction: column;
+    margin-top: 25%;
+  }
+  .contact-container picture {
+    height: 10rem;
+  }
+  .image-container {
+    justify-content: center;
+  }
 }
 
 /*# sourceMappingURL=styles.css.map */

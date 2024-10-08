@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-var_dump($_SESSION['formData']);
+/*var_dump($_SESSION['formData']);*/
 
 if (isset($_SESSION['formData'])) {
     $formData = $_SESSION['formData'];
@@ -34,14 +34,32 @@ if (isset($_SESSION['formData'])) {
     <link href="static/css/styles.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
-<h1>Form Submission Successful!</h1>
+    <main>
+        <section class="success">
+            <h1>Bedankt! Wij gaan aan de slag.</h1>
+            <p>We hebben je verzoek ontvangen en zullen je zo snel mogelijk, binnen 24 uur beantwoorden.</p>
 
-<p>Voornaam: <?php echo $voornaam ?></p>
-<p>Achternaam: <?php echo $achternaam ?></p>
-<p>Emailadres: <?php echo $emailadres ?></p>
-<p>Bericht: <?php echo $bericht ?></p>
-
-<!--<script src="static/js/script.js"></script>-->
+            <h2>Je verzoek</h2>
+            <section class="form-results">
+                <div class="label-container">
+                    <p>Voornaam</p>
+                    <p><?php echo $voornaam ?></p>
+                </div>
+                <div class="label-container">
+                    <p>Achternaam</p>
+                    <p><?php echo $achternaam ?></p>
+                </div>
+                <div class="label-container">
+                    <p>E-mailadres</p>
+                    <p><?php echo $emailadres ?></p>
+                </div>
+                <div class="label-container">
+                    <p>Bericht</p>
+                    <p><?php echo $bericht ?></p>
+                </div>
+            </section>
+        </section>
+    </main>
 </body>
 </html>
 

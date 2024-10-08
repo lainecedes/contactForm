@@ -11,49 +11,48 @@
 </head>
 
 <body>
-<?php include 'includes/header.php'; ?>
-
 <?php
-$title = "Contactformulier";
-$description = "test!";
+$title = "Vragen?";
+$description = "Heb je vragen over je museumbezoek, of iets dat niet helemaal lekker loopt? Laat het ons weten via het formulier hieronder. Onze klantenservice staat voor je klaar.";
 ?>
 
 <main>
-    <h1><?php echo $title; ?></h1>
-    <p><?php echo $description; ?></p>
-
-    <section class="form-container">
+    <section class="contact-container">
+        <picture class="image-container">
+            <source srcset="static/images/neonart.webp" type="image/webp" media="(min-width: 600px)">
+            <img src="static/images/neonart.jpg" class="img-fluid" width="4000" height="6000" alt="">
+        </picture>
         <form id="contact" action="/success.php" method="POST">
+            <h1><?php echo $title; ?></h1>
             <fieldset>
-                <legend>Vul hier je gegevens in</legend>
-                <label for="voornaam">
-                    <input id="voornaam" name="voornaam" placeholder="Voornaam" type="text" value=""/>
-                    <div class="error" id="voornaam-error"></div>
-                </label>
+                <legend><?php echo $description; ?></legend>
+                <div class="label-container">
+                    <div class="name-container">
+                        <label for="voornaam">Voornaam
+                            <input id="voornaam" name="voornaam" placeholder="Jouw voornaam" type="text" value=""/>
+                            <span class="error" id="voornaam-error"></span>
+                        </label>
 
-                <label for="achternaam">
-                    <input id="achternaam" name="achternaam" placeholder="Achternaam" type="text" value=""/>
-                    <div class="error" id="achternaam-error"></div>
-                </label>
+                        <label for="achternaam">Achternaam
+                            <input id="achternaam" name="achternaam" placeholder="Jouw achternaam" type="text" value=""/>
+                            <span class="error" id="achternaam-error"></span>
+                        </label>
+                    </div>
+                    <label for="emailadres">E-mailadres
+                        <input id="emailadres" name="emailadres" placeholder="Jouw e-mailadres" type="email" value=""/>
+                        <span class="error" id="emailadres-error"></span>
+                    </label>
 
-                <label for="emailadres">
-                    <input id="emailadres" name="emailadres" placeholder="E-mailadres" type="email" value=""/>
-                    <div class="error" id="emailadres-error"></div>
-                </label>
-
-                <label for="bericht">
-                    <input id="bericht" name="bericht" placeholder="Typ hier je bericht..." type="text" value=""/>
-                    <div class="error" id="bericht-error"></div>
-                </label>
+                    <label for="bericht">Bericht
+                        <textarea id="bericht" name="bericht" rows="6" cols="60" type="text" placeholder="Typ hier je bericht..."></textarea>
+                        <span class="error" id="bericht-error"></span>
+                    </label>
+                </div>
             </fieldset>
             <button form="contact" type="submit">Verzenden</button>
         </form>
     </section>
 </main>
-
-<?php /*if (isset($errors['emailadres'])): */?><!--
-    <span class="error-message"><?php /*echo $errors['emailadres']; */?></span>
---><?php /*endif; */?>
 
 <?php include 'includes/footer.php'; ?>
 

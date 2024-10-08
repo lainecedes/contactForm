@@ -1,12 +1,17 @@
+// Colors
 $colors: (
-        primary: #000,
-        secondary: #fff,
+		primary: #fff,
+		secondary: #000,
+		tertiary: #240046,
+		tertiary-dark-accent: #3c096c,
+		tertiary-light-accent: #7b2cbf,
+		invalid: #ff0000,
+		valid: #00a400
 );
 
-
 // Fonts
-/*$font-heading: 'microgramma-extended', sans-serif;*/
-$font-heading: "Urbanist", sans-serif;
+$font-heading: 'microgramma-extended', sans-serif;
+/*$font-heading: "Urbanist", sans-serif;*/
 $font-body: 'Red Hat Display', sans-serif;
 
 $font-weight-normal: 500;
@@ -14,3 +19,9 @@ $font-weight-bold: 700;
 $font-weight-black: 900;
 
 // Default font weight variables?
+
+
+// breakpoints
+$breakpoint-small: 576px;
+$breakpoint-medium: 768px;
+$breakpoint-large: 992px;
