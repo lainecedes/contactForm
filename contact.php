@@ -1,10 +1,9 @@
-<!-- Header -->
 <!DOCTYPE html>
 <html lang="nl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Een geweldig formulier</title>
+    <title>Vragen?</title>
     <!--  Adobe Fonts  -->
     <link rel="stylesheet" href="https://use.typekit.net/nbr2zpp.css">
     <link href="static/css/styles.css" rel="stylesheet" type="text/css"/>
@@ -20,7 +19,7 @@ $description = "Heb je vragen over je museumbezoek, of iets dat niet helemaal le
     <section class="contact-container">
         <picture class="image-container">
             <source srcset="static/images/neonart.webp" type="image/webp" media="(min-width: 600px)">
-            <img src="static/images/neonart.jpg" class="img-fluid" width="4000" height="6000" alt="">
+            <img src="static/images/neonart.jpg" class="img-fluid" width="4000" height="6000" alt="Neon light background effects">
         </picture>
         <form id="contact" action="/success.php" method="POST">
             <h1><?php echo $title; ?></h1>
@@ -34,7 +33,8 @@ $description = "Heb je vragen over je museumbezoek, of iets dat niet helemaal le
                         </label>
 
                         <label for="achternaam">Achternaam
-                            <input id="achternaam" name="achternaam" placeholder="Jouw achternaam" type="text" value=""/>
+                            <input id="achternaam" name="achternaam" placeholder="Jouw achternaam" type="text"
+                                   value=""/>
                             <span class="error" id="achternaam-error"></span>
                         </label>
                     </div>

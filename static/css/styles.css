@@ -1,6 +1,7 @@
-/*$font-heading: "Urbanist", sans-serif;*/
 form {
-  width: 80vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 form fieldset {
   border: none;
@@ -8,6 +9,18 @@ form fieldset {
 }
 form fieldset legend {
   margin: 0 0 1rem 0;
+}
+form fieldset label.invalid input, form fieldset label.invalid textarea {
+  border: 0.1rem solid #ff0000;
+}
+form fieldset label.valid input, form fieldset label.valid textarea {
+  border: 0.1rem solid #00a400;
+}
+form fieldset label input:focus-visible, form fieldset label textarea:focus-visible {
+  outline: 0.1rem solid #5BE8CC;
+}
+form fieldset label[for=bericht] textarea {
+  margin: 0.5rem 0 0 0;
 }
 form fieldset .label-container {
   display: flex;
@@ -21,16 +34,20 @@ form fieldset .label-container .name-container {
 form fieldset .label-container .name-container label[for=voornaam], form fieldset .label-container .name-container label[for=achternaam] {
   flex: 1;
 }
-form fieldset .label-container label[for=bericht] textarea {
-  margin: 0.5rem 0 0 0;
+form button {
+  transition: background 0.3s ease;
+}
+form button:hover {
+  background: #B55FFF;
 }
 
-/* Success page*/
+/* success.php */
 .form-results .label-container {
   display: flex;
   flex-direction: column;
 }
 
+/* general styling */
 textarea {
   padding: 0.5rem 0.5rem 0.5rem;
   resize: none;
@@ -53,28 +70,30 @@ textarea::placeholder {
   color: #fff;
   opacity: 0.7;
 }
-input[type=text].invalid,
-input[type=email].invalid,
-textarea.invalid {
-  border: 0.1rem solid #ff0000;
-}
-input[type=text].valid,
-input[type=email].valid,
-textarea.valid {
-  border: 0.1rem solid #00a400;
-}
 
 button[type=submit],
 input[type=submit] {
   color: inherit;
   background: #7b2cbf;
   border-radius: 0.3rem;
+  border: none;
   margin: 1rem 0 0 0;
   padding: 0.75rem;
   width: 10rem;
   cursor: pointer;
 }
 
+main,
+input[type=text],
+input[type=email],
+textarea,
+button[type=submit],
+input[type=submit],
+footer {
+  letter-spacing: 0.05rem;
+}
+
+/* Additional validation error messages */
 .hidden {
   display: none;
 }
@@ -93,7 +112,12 @@ html, body {
 }
 
 main, footer {
-  margin: 0 3rem 0 3rem;
+  margin: 0 4rem 0 4rem;
+}
+
+footer {
+  padding: 1rem 0 0 0;
+  opacity: 0.5;
 }
 
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
@@ -431,38 +455,39 @@ h1 {
   font-weight: 900;
 }
 
+h2 {
+  margin: 0 0 1rem 0;
+}
+
 p {
   font-family: "Red Hat Display", sans-serif;
 }
 
-/*$font-heading: "Urbanist", sans-serif;*/
 body {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   height: 100%;
   background-color: #240046;
   color: #fff;
 }
 
-.contact-container {
+section.contact-container {
   display: flex;
   gap: 2rem;
   align-items: stretch;
+  margin: 2rem 0 0 0;
 }
-.contact-container .image-container,
-.contact-container form {
+section.contact-container .image-container, section.contact-container form {
   flex-grow: 1;
-  flex-shrink: 1;
   flex-basis: 0;
 }
-.contact-container picture {
+section.contact-container picture {
   display: flex;
   align-items: center;
   padding: 0;
-  height: 34rem;
+  height: 90vh;
 }
-.contact-container picture img {
+section.contact-container picture img {
   border-radius: 1rem;
   width: 100%;
   height: auto;
@@ -476,16 +501,34 @@ body {
     flex-direction: column;
     gap: 0;
   }
-  .contact-container {
+  section.contact-container {
     flex-direction: column;
-    margin-top: 25%;
   }
-  .contact-container picture {
-    height: 10rem;
+  section.contact-container picture {
+    height: 20rem;
   }
   .image-container {
     justify-content: center;
   }
+}
+.results {
+  justify-content: center;
+}
+
+section.success p {
+  margin: 0 0 2rem 0;
+}
+section.success section.form-results {
+  background-color: #3c096c;
+  padding: 2rem;
+  border-radius: 1rem;
+}
+section.success section.form-results .label-container p {
+  margin: 0 0 0.75rem 0;
+  padding: 0;
+}
+section.success section.form-results .label-container p:first-child {
+  font-weight: 700;
 }
 
 /*# sourceMappingURL=styles.css.map */

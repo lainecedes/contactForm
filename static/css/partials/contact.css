@@ -1,31 +1,28 @@
-/*$font-heading: "Urbanist", sans-serif;*/
 body {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   height: 100%;
   background-color: #240046;
   color: #fff;
 }
 
-.contact-container {
+section.contact-container {
   display: flex;
   gap: 2rem;
   align-items: stretch;
+  margin: 2rem 0 0 0;
 }
-.contact-container .image-container,
-.contact-container form {
+section.contact-container .image-container, section.contact-container form {
   flex-grow: 1;
-  flex-shrink: 1;
   flex-basis: 0;
 }
-.contact-container picture {
+section.contact-container picture {
   display: flex;
   align-items: center;
   padding: 0;
-  height: 34rem;
+  height: 90vh;
 }
-.contact-container picture img {
+section.contact-container picture img {
   border-radius: 1rem;
   width: 100%;
   height: auto;
@@ -39,12 +36,11 @@ body {
     flex-direction: column;
     gap: 0;
   }
-  .contact-container {
+  section.contact-container {
     flex-direction: column;
-    margin-top: 25%;
   }
-  .contact-container picture {
-    height: 10rem;
+  section.contact-container picture {
+    height: 20rem;
   }
   .image-container {
     justify-content: center;

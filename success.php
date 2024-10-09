@@ -1,8 +1,6 @@
 <?php
 session_start();
 
-/*var_dump($_SESSION['formData']);*/
-
 if (isset($_SESSION['formData'])) {
     $formData = $_SESSION['formData'];
 
@@ -14,13 +12,10 @@ if (isset($_SESSION['formData'])) {
     // clear session
     unset($_SESSION['formData']);
 
-    } else {
-
+} else {
     echo "No form data available.";
     exit;
 }
-
-
 ?>
 
 <!DOCTYPE html>
@@ -28,38 +23,38 @@ if (isset($_SESSION['formData'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Een formulier</title>
+    <title>Verstuurd!</title>
     <!--  Adobe Fonts  -->
     <link rel="stylesheet" href="https://use.typekit.net/nbr2zpp.css">
     <link href="static/css/styles.css" rel="stylesheet" type="text/css"/>
 </head>
-<body>
-    <main>
-        <section class="success">
-            <h1>Bedankt! Wij gaan aan de slag.</h1>
-            <p>We hebben je verzoek ontvangen en zullen je zo snel mogelijk, binnen 24 uur beantwoorden.</p>
+<body class="results">
+<main>
+    <section class="success">
+        <h1>Bedankt! Wij gaan aan de slag.</h1>
+        <p>We hebben je verzoek ontvangen en zullen je zo snel mogelijk, binnen 24 uur beantwoorden.</p>
 
+        <section class="form-results">
             <h2>Je verzoek</h2>
-            <section class="form-results">
-                <div class="label-container">
-                    <p>Voornaam</p>
-                    <p><?php echo $voornaam ?></p>
-                </div>
-                <div class="label-container">
-                    <p>Achternaam</p>
-                    <p><?php echo $achternaam ?></p>
-                </div>
-                <div class="label-container">
-                    <p>E-mailadres</p>
-                    <p><?php echo $emailadres ?></p>
-                </div>
-                <div class="label-container">
-                    <p>Bericht</p>
-                    <p><?php echo $bericht ?></p>
-                </div>
-            </section>
+            <div class="label-container">
+                <p>Voornaam</p>
+                <p><?php echo $voornaam ?></p>
+            </div>
+            <div class="label-container">
+                <p>Achternaam</p>
+                <p><?php echo $achternaam ?></p>
+            </div>
+            <div class="label-container">
+                <p>E-mailadres</p>
+                <p><?php echo $emailadres ?></p>
+            </div>
+            <div class="label-container">
+                <p>Bericht</p>
+                <p><?php echo $bericht ?></p>
+            </div>
         </section>
-    </main>
+    </section>
+</main>
 </body>
 </html>
 

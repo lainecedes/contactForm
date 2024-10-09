@@ -1,5 +1,7 @@
 form {
-	width: clamp(70vw, 80vw, 90vw);
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
 
 	fieldset {
 		border: none;
@@ -7,7 +9,26 @@ form {
 
 		legend {
 			margin: 0 0 1rem 0;
+		}
 
+		label {
+			&.invalid input, &.invalid textarea {
+				border: .1rem solid color(invalid);
+			}
+
+			&.valid input, &.valid textarea {
+				border: .1rem solid color(valid);
+			}
+
+			input:focus-visible, textarea:focus-visible {
+				outline: .1rem solid color(outline);
+			}
+
+			&[for="bericht"] {
+				textarea {
+					margin: .5rem 0 0 0;
+				}
+			}
 		}
 
 		.label-container {
@@ -23,18 +44,19 @@ form {
 					flex: 1;
 				}
 			}
+		}
+	}
 
-			label[for="bericht"] {
-				textarea {
-					margin: .5rem 0 0 0;
+	button {
+		transition: background 0.3s ease;
 
-				}
-			}
+		&:hover {
+			background: color(button-hover);
 		}
 	}
 }
 
-/* Success page*/
+/* success.php */
 .form-results {
 	.label-container {
 		display: flex;
@@ -42,6 +64,7 @@ form {
 	}
 }
 
+/* general styling */
 textarea {
 	padding: .5rem .5rem .5rem;
 	resize: none;
@@ -62,14 +85,6 @@ textarea {
 		color: color(primary);
 		opacity: 0.7;
 	}
-
-	&.invalid {
-		border: .1rem solid color(invalid);
-	}
-
-	&.valid {
-		border: .1rem solid color(valid);
-	}
 }
 
 button[type="submit"],
@@ -77,14 +92,24 @@ input[type="submit"] {
 	color: inherit;
 	background: color(tertiary-light-accent);
 	border-radius: 0.3rem;
+	border: none;
 	margin: 1rem 0 0 0;
 	padding: 0.75rem;
 	width: 10rem;
 	cursor: pointer;
 }
 
+main,
+input[type="text"],
+input[type="email"],
+textarea,
+button[type="submit"],
+input[type="submit"],
+footer {
+	letter-spacing: .05rem;
+}
 
-// validation error messages
+/* Additional validation error messages */
 .hidden {
 	display: none;
 }

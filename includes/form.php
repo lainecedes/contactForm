@@ -1,4 +1,5 @@
 <?php
+// form validation method rewritten with the object oriented programming method
 
 session_start();
 
@@ -20,18 +21,18 @@ class Validation {
     private function sanitizeInputs($input) {
         if (is_array($input)) {
             foreach ($input as $key => $value) {
-                $input[$key] = htmlspecialchars(trim($value)); // trim and value together
+                $input[$key] = htmlspecialchars(trim($value)); // trim and sanitize together
             }
             return $input;
         }
-        return htmlspecialchars(trim($input));  // single inputs
+        return htmlspecialchars(trim($input));
     }
 
     // 2. Validate patterns helper
     public function validatePatterns() {
         foreach ($this->formInputs as $field => $value) {
             if (empty($value)) {
-                $this->errors[$field] = ucfirst($field)." is verplicht"; // capitalize first letter
+                $this->errors[$field] = ucfirst($field)." is verplicht"; // capitalize first letter with ucfirst
             }
             else if (!preg_match($this->patterns[$field]['pattern'], $value)) {
                 $this->errors[$field] = $this->patterns[$field]['error'];
@@ -78,7 +79,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         ],
         'emailadres' => [
             'pattern' => $emailPattern,
-            'error' => 'Voer een geldig e-mailadres in (voorbeeld hierin?)'
+            'error' => 'Voer een geldig e-mailadres in, bijv. test@mail.nl'
         ],
         'bericht' => [
             'pattern' => $messagePattern,

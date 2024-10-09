@@ -5,21 +5,19 @@ $colors: (
 		tertiary: #240046,
 		tertiary-dark-accent: #3c096c,
 		tertiary-light-accent: #7b2cbf,
+		button-hover: #B55FFF,
+		outline: #5BE8CC,
 		invalid: #ff0000,
 		valid: #00a400
 );
 
 // Fonts
 $font-heading: 'microgramma-extended', sans-serif;
-/*$font-heading: "Urbanist", sans-serif;*/
 $font-body: 'Red Hat Display', sans-serif;
 
 $font-weight-normal: 500;
 $font-weight-bold: 700;
 $font-weight-black: 900;
-
-// Default font weight variables?
-
 
 // breakpoints
 $breakpoint-small: 576px;

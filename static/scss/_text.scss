@@ -1,15 +1,12 @@
-main {
-
-}
 
 h1 {
     font-family: $font-heading;
 	font-weight: $font-weight-black;
 }
 
-h2 {}
-
-h3 {}
+h2 {
+	margin: 0 0 1rem 0;
+}
 
 p {
 	font-family: $font-body;

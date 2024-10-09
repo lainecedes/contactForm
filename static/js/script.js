@@ -33,7 +33,7 @@ form.addEventListener('submit', function (event) {
         })
         .then(data => {
             if (data.status === 'error') {
-                // JSON error output as a console error
+                // JSON error output from PHP as a console error
                 console.error('Validation errors:', data.errors);
 
                 form.querySelectorAll('input, textarea').forEach((input) => {
